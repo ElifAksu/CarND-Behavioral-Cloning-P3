@@ -22,7 +22,7 @@ My project includes the following files:
 
 ### Model Architecture and Training Strategy
 
-I have used CNN model which is described in `End-to-End Learning for Self-Driving Cars` paper. The model is defined in `model.py`. First of all, data is normalized in the model using a Keras lambda layer. Images are cropped to see only half bottom of the image to get rid of uncessary part of the image. Then, I constructed the model. I added dropouts on two outputs of fully-connected layer. 
+I have used CNN model which is described in `End-to-End Learning for Self-Driving Cars` paper. The model is defined in `model.py`. First of all, data is normalized in the model using a Keras lambda layer. Images are cropped to see only half bottom of the image to get rid of uncessary part of the image. Then, I constructed the model. The model includes ELU layers to introduce nonlinearity. I added dropouts on two outputs of fully-connected layer. 
 The model architecture is as follows: 
 
 | Layer         		|     Description	        					| 
@@ -40,8 +40,7 @@ The model architecture is as follows:
 | ELU					|	|
 | Convolution 3x3     	|   outputs 1x33x64 	|
 | ELU					|	|
-| Flatten					| Output:2112	|
-						
+| Flatten					| Output:2112	|						
 | Fully connected		|  Output:100  | 
 | Dropout	|			keep prob:0.25|
  |ELU					|	|
@@ -54,7 +53,7 @@ The model architecture is as follows:
  |ELU					|	|
 
 
-The model includes ELU layers to introduce nonlinearity.
+
 #### Attempts to reduce overfitting in the model
 
 The model contains dropout layers in order to reduce overfitting.
@@ -79,9 +78,12 @@ I used the data provided by Udacity. I couldnot collect the more data so, i had 
 * Translation - Geometric augmentation
 
 Some example process utputs are: 
-<img src="./example_orig.jpg"  height ="40%" width="60%">
+
+
+<img src="./example_orig.jpg"  height ="30%" width="50%">
 <img src="./example_sharpen.png"  height ="40%" width="60%">
 <img src="./bright_example.png"  height ="40%" width="60%">
+
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
