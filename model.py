@@ -142,7 +142,9 @@ model.add(Flatten())
 
 #fully connected layers
 model.add(Dense(100,activation='elu'))
+model.add(core.Dropout(0.25))
 model.add(Dense(50,activation='elu'))
+model.add(core.Dropout(0.25))
 model.add(Dense(10,activation='elu'))
 model.add(Dense(1)) 
 
