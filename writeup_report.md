@@ -47,9 +47,9 @@ The model architecture is as follows:
 | Fully connected		|  Output:50  | 
 | Dropout	|			keep prob:0.25|
  |ELU					|	|
-| Fully connected		|  Output:50  | 
+| Fully connected		|  Output:10  | 
  |ELU					|	|
-| Fully connected		|  Output:50  | 
+| Fully connected		|  Output:1  | 
  |ELU					|	|
 
 
@@ -91,7 +91,7 @@ I used this training data for training the model. The validation set helped dete
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
-Here's a [link to my video result](./test.mp4)
+Here's a [link to my video result](./final_run.mp4)
 
 #### Improvements
 
