@@ -20,21 +20,6 @@ from keras.layers import Lambda, Cropping2D
 from keras.models import Model
 from skimage import io, color, exposure, filters, img_as_ubyte
 
-def download(url, path):
-    if not os.path.isfile(path):
-        urlretrieve(url,path)
-        print("File downloaded")
-    else:
-        print("file already downloaded")
-
-def uncompress_features_labels(dir,path):
-    if(os.path.exists(path)):
-        print('Data already extracted')
-    else:
-        with ZipFile(dir) as zipf:
-            zipf.extractall(path)
-            print("Data extracted.")
-
 def sharpen_img(img):
 
     gb  = cv2.GaussianBlur(img, (7,7), 15.0)
@@ -132,7 +117,7 @@ validation_generator= generator(validation_samples, batch_size=batch_size)
 
 model =  Sequential()
 
-# Preprocess incoming data, centered around zero with small standard deviation 
+# Preprocess incoming data
 model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
 # trim image to only see section with road
 model.add(Cropping2D(cropping=((70,25),(0,0))))           
