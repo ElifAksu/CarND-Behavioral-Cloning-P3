@@ -58,14 +58,14 @@ def trans_image(image,steer,trans_range):
     tr_x = trans_range*np.random.uniform()-trans_range/2
     steer_ang = steer + tr_x/trans_range*2*.2
     tr_y = 10*np.random.uniform()-10/2
-    #tr_y = 0
+    
     Trans_M = np.float32([[1,0,tr_x],[0,1,tr_y]])
     image_tr = cv2.warpAffine(image,Trans_M,(cols,rows))
     return image_tr,steer_ang,tr_x
     
 def generator(samples, batch_size):
     num_samples = len(samples)
-    while 1: # Loop forever so the generator never terminates
+    while 1: 
         samples = sklearn.utils.shuffle(samples)
         for offset in range(0, num_samples, batch_size):
             batch_samples = samples[offset:offset+batch_size]
@@ -128,9 +128,9 @@ epochs= 20
 train_generator= generator(train_samples, batch_size=batch_size)
 validation_generator= generator(validation_samples, batch_size=batch_size)
 
-#Model. NVIDIA "End to End Learning for Self-Driving Cars" paper
+#Model. NVIDIA "End to End Learningfor Self-Driving Cars" paper
 
-model = Sequential()
+model =  Sequential()
 
 # Preprocess incoming data, centered around zero with small standard deviation 
 model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
